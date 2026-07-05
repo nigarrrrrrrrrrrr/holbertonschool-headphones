@@ -1,0 +1,262 @@
+/* ===== Variables ===== */
+:root {
+    --color-primary: #FF6565;
+    --color-dark: #071629;
+    --color-white: #ffffff;
+    --color-light: #f2f2f2;
+    --color-gray: #979797;
+    --max-width: 1000px;
+    --font-main: 'Source Sans Pro', sans-serif;
+}
+
+/* ===== Reset ===== */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    border: none;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--font-main);
+    color: var(--color-white);
+}
+
+/* ===== Shared ===== */
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border: none;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+    transition: opacity 0.3s;
+}
+
+.btn:hover,
+.btn:active {
+    opacity: 0.9;
+}
+
+a:hover,
+a:active {
+    color: var(--color-primary);
+}
+
+/* ===== Header ===== */
+.header {
+    background-image: url(images/headphones_hero_1.jpg);
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-color: var(--color-dark);
+    min-height: 800px;
+}
+
+/* ===== Navbar ===== */
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 28px;
+    position: relative;
+}
+
+.header-logo img {
+    width: 161px;
+    height: 32px;
+    display: block;
+}
+
+.navbar-menu .nav {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.nav-link {
+    color: var(--color-white);
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: lowercase;
+    transition: color 0.2s;
+}
+
+.nav-link:hover,
+.nav-link:active {
+    color: var(--color-primary);
+}
+
+/* ===== Hamburger (hidden desktop) ===== */
+.menu-btn {
+    display: none;
+}
+
+.menu-icon {
+    display: none;
+    cursor: pointer;
+    user-select: none;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+.navicon {
+    display: block;
+    width: 13px;
+    height: 2px;
+    background: var(--color-light);
+    border-radius: 2px;
+    position: relative;
+}
+
+.menu-icon .navicon::before,
+.menu-icon .navicon::after {
+    content: "";
+    display: block;
+    position: absolute;
+    background: var(--color-light);
+    border-radius: 2px;
+    transition: all 0.2s ease-out;
+}
+
+.menu-icon .navicon::before {
+    width: 18px;
+    height: 2px;
+    top: calc(-4px - 2px);
+}
+
+.menu-icon .navicon::after {
+    width: 20px;
+    height: 2px;
+    top: calc(4px + 2px);
+}
+
+/* Hamburger open state */
+.menu-btn:checked ~ .menu-icon .navicon::before {
+    transform: rotate(-45deg);
+    top: 0;
+    width: 20px;
+}
+
+.menu-btn:checked ~ .menu-icon .navicon::after {
+    transform: rotate(45deg);
+    top: 0;
+}
+
+.menu-btn:checked ~ .menu-icon .navicon {
+    background: transparent;
+    width: 0;
+}
+
+/* ===== Hero ===== */
+.hero {
+    max-width: 637px;
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 220px;
+    padding-bottom: 100px;
+}
+
+.hero h1 {
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 1.2;
+    margin-bottom: 8px;
+}
+
+.hero-subtitle {
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+
+.hero .btn {
+    margin: 0 auto 64px;
+}
+
+.hero p {
+    font-size: 14px;
+    line-height: 28px;
+    font-weight: normal;
+}
+
+/* ===== Mobile (480px) ===== */
+@media (max-width: 480px) {
+    .header-container {
+        flex-wrap: wrap;
+        justify-content: center;
+        padding-top: 28px;
+        padding-bottom: 20px;
+    }
+
+    .menu-icon {
+        display: block;
+        top: 30px;
+        transform: none;
+    }
+
+    .header-logo {
+        flex: 0 0 auto;
+    }
+
+    .navbar-menu {
+        display: none;
+        width: 100%;
+        text-align: center;
+        padding: 30px 0;
+    }
+
+    .navbar-menu .nav {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .nav-link {
+        font-size: 14px;
+    }
+
+    .menu-btn:checked ~ .navbar-menu {
+        display: block;
+    }
+
+    .hero {
+        padding-top: 180px;
+        padding-bottom: 60px;
+    }
+
+    .hero h1 {
+        font-size: 28px;
+    }
+}
